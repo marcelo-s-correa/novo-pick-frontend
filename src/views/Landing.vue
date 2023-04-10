@@ -1,10 +1,10 @@
 <template>
-  <router-view />
+  <h3>Landingpage</h3>
 </template>
 
 <script>
 export default {
-  name: "App",
+  name: "LandingPage",
   components: {},
 };
 </script>
