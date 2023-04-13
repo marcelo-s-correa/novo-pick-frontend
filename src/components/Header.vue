@@ -34,4 +34,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+div.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 80px;
+  gap: 32px;
+  height: 80px;
+  background: #ffffff;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+}
+</style>
