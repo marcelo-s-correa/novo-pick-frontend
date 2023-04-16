@@ -6,6 +6,14 @@
 export default {
   name: "LandingPage",
   components: {},
+  data() {
+    return {
+      pageTitle: "Ínicio | Pick ",
+    };
+  },
+  mounted() {
+    document.title = this.pageTitle;
+  },
 };
 </script>
 

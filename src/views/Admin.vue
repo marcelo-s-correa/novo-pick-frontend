@@ -11,7 +11,7 @@ import AppFooter from "@/components/Footer.vue";
 import AppHeader from "@/components/Header.vue";
 
 export default {
-  name: "AppMain",
+  name: "AppAdmin",
   components: { AppHeader, AppFooter },
 };
 </script>

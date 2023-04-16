@@ -6,6 +6,14 @@
 export default {
   name: "UpdatesPage",
   components: {},
+  data() {
+    return {
+      pageTitle: "Atualizações | Pick ",
+    };
+  },
+  mounted() {
+    document.title = this.pageTitle;
+  },
 };
 </script>
 

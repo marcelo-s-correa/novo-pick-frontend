@@ -1,13 +1,17 @@
-import Aboutpage from "@/components/About.vue";
-import LandingPage from "@/components/Landing.vue";
-import UpdatePage from "@/components/Updates.vue";
+import Aboutpage from "@/components/Main/About.vue";
+import LandingPage from "@/components/Main/Landing.vue";
+import UpdatePage from "@/components/Main/Updates.vue";
 import LoginPage from "@/views/Login.vue";
+import RegisterPage from "@/views/Register.vue";
+
 import AppMain from "@/views/Main.vue";
 import * as VueRouter from "vue-router";
 import store from "../store";
 
 const routes = [
   { path: "/login", component: LoginPage },
+  { path: "/register", component: RegisterPage },
+
   {
     path: "/",
     component: AppMain,

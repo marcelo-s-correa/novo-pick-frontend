@@ -6,6 +6,14 @@
 export default {
   name: "AboutPage",
   components: {},
+  data() {
+    return {
+      pageTitle: "Sobre | Pick ",
+    };
+  },
+  mounted() {
+    document.title = this.pageTitle;
+  },
 };
 </script>
 

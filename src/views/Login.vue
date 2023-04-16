@@ -12,9 +12,14 @@ export default {
   name: "LoginPage",
   data() {
     return {
+      pageTitle: "Entrar | Pick ",
+
       username: "",
       password: "",
     };
+  },
+  mounted() {
+    document.title = this.pageTitle;
   },
   methods: {
     login() {},

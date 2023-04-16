@@ -1,7 +1,38 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     font-size: 16px;
     box-sizing: border-box;
     background-color: #ececec;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.router-view {
+    flex-grow: 1;
 }

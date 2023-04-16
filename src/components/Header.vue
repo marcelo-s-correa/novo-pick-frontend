@@ -1,20 +1,47 @@
 <template>
-  <div class="header-container">
+  <header>
     <h1>Pick</h1>
-    <nav class="links-container"></nav>
-    <section class="action-buttons">
-      <button class="signin">Entrar</button>
-      <button class="signup">Cadastro</button>
-    </section>
-  </div>
+    <nav class="nav-menu">
+      <ul class="nav-links" :class="{ 'nav-active': isNavActive }">
+        <li v-for="link in navLinks" :key="link.label">
+          <router-link class="link" :to="link.url">
+            {{ link.label }}</router-link
+          >
+        </li>
+      </ul>
+      <div class="actions">
+        <li>
+          <router-link class="action-link" :to="actionLinks[0].url">
+            {{ actionLinks[0].label }}</router-link
+          >
+        </li>
+        <li>
+          <router-link class="action-link" :to="actionLinks[1].url">
+            {{ actionLinks[1].label }}</router-link
+          >
+        </li>
+      </div>
+    </nav>
+  </header>
 </template>
 
 <script>
 export default {
   name: "AppHeader",
-  components: {},
-  data: () => {
+
+  data() {
     return {
+      isNavActive: false,
+      actionLinks: [
+        {
+          label: "Entrar",
+          url: "/login",
+        },
+        {
+          label: "Cadastro",
+          url: "/register",
+        },
+      ],
       navLinks: [
         {
           label: "Ínício",
@@ -31,20 +58,12 @@ export default {
       ],
     };
   },
+  methods: {
+    toggleNav() {
+      this.isNavActive = !this.isNavActive;
+    },
+  },
 };
 </script>
 
-<style>
-div.header-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 80px;
-  gap: 32px;
-  height: 80px;
-  background: #ffffff;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2px);
-}
-</style>
+<style scoped src="@/styles/header.css"></style>
