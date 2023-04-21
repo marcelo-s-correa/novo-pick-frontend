@@ -23,7 +23,26 @@ header {
 }
 
 .action-link {
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 18px;
+  gap: 10px;
+  width: 100px;
+  height: 35px;
+  color: #fff;
+
+}
+
+#signin {
+  background-color: #2278C7;
+  border-radius: 18px;
+}
+
+#signup{
+  background-color: #60798F;
+  border-radius: 18px;
 }
 
 .link {

@@ -10,12 +10,12 @@
         </li>
       </ul>
       <div class="actions">
-        <li>
+        <li id="signin">
           <router-link class="action-link" :to="actionLinks[0].url">
             {{ actionLinks[0].label }}</router-link
           >
         </li>
-        <li>
+        <li id="signup">
           <router-link class="action-link" :to="actionLinks[1].url">
             {{ actionLinks[1].label }}</router-link
           >
@@ -28,7 +28,6 @@
 <script>
 export default {
   name: "AppHeader",
-
   data() {
     return {
       isNavActive: false,

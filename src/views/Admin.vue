@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import AppFooter from "@/components/Footer.vue";
-import AppHeader from "@/components/Header.vue";
+import AppFooter from "@/components/Main/Footer.vue.js";
+import AppHeader from "@/components/Main/Header.vue.js";
 
 export default {
   name: "AppAdmin",
