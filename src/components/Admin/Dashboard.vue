@@ -1,6 +1,5 @@
 <template>
   <h3>Painel</h3>
-  do adm
 </template>
 
 <script>
