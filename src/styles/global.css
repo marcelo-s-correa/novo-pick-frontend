@@ -1,10 +1,17 @@
+:root {
+  --primary-color: #2278C7;
+  --secondary-color: #60798F;
+  --text-color: #333;
+  --light-color: #ececec; 
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
     font-size: 16px;
     box-sizing: border-box;
-    background-color: #ececec;
+    background-color: var(--light-color);
 }
 
 ul {
