@@ -1,7 +1,5 @@
 <template>
-  <div class="mostra">
-    <h1>USUARIOS</h1>
-  </div>
+  <h1>USUARIOS</h1>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <v-app style="height: 100vh">
+  <v-app>
     <v-navigation-drawer v-model="drawer" app>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.route">
@@ -16,7 +16,15 @@
       <v-toolbar-title>Administração | Pick</v-toolbar-title>
     </v-app-bar>
 
-    <v-content app>
+    <v-content
+      app
+      :style="{
+        background: 'blue',
+        marginTop: '64px',
+        marginLeft: drawer ? '255px' : '64px',
+        flex: 1,
+      }"
+    >
       <router-view></router-view>
     </v-content>
   </v-app>
