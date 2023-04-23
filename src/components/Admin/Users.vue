@@ -17,10 +17,4 @@ export default {
 };
 </script>
 
-<style>
-.mostra {
-  width: 100vw;
-  height: 100vh;
-  background-color: blue;
-}
-</style>
+<style></style>

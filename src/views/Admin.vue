@@ -19,9 +19,8 @@
     <v-content
       app
       :style="{
-        background: 'blue',
         marginTop: '64px',
-        marginLeft: drawer ? '255px' : '64px',
+        marginLeft: drawer ? '255px' : '0px',
         flex: 1,
       }"
     >
