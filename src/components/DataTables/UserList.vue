@@ -1,26 +1,34 @@
 <template>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Nome completo</th>
-      <th>Cidade</th>
-      <th>Estado</th>
-      <th>Pontuação</th>
-      <th>Editar</th>
-      <th>Deletar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="(item, index) in data" :key="index">
-      <td>{{ item.id }}</td>
-      <td>{{ item.nome }}</td>
-      <td>{{ item.cidade }}</td>
-      <td>{{ item.estado }}</td>
-      <td>{{ item.pontuacao }}</td>
-      <td><i class="fa fa-pencil"></i></td>
-      <td><i class="fa fa-trash"></i></td>
-    </tr>
-  </tbody>
+  <table>
+    <thead>
+      <tr>
+        <th class="table-header">Id</th>
+        <th class="table-header">Nome Completo</th>
+        <th class="table-header">Nome de usuário</th>
+        <th class="table-header">Data de nascimento</th>
+        <th class="table-header">Gênero</th>
+        <th class="table-header">Cidade</th>
+        <th class="table-header">Estado</th>
+        <th class="table-header">Administrador</th>
+        <th class="table-header">Editar</th>
+        <th class="table-header">Deletar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(item, index) in data" :key="index">
+        <td class="table-id">{{ item.id }}</td>
+        <td class="table-data">{{ item.nome }}</td>
+        <td class="table-id">{{ item.username }}</td>
+        <td class="table-data">{{ item.nascimento }}</td>
+        <td class="table-id">{{ item.genero }}</td>
+        <td class="table-data">{{ item.cidade }}</td>
+        <td class="table-id">{{ item.estado }}</td>
+        <td class="table-id">{{ item.isAdmin }}</td>
+        <td class="table-data"><i class="fa fa-pencil table-icon"></i></td>
+        <td class="table-data"><i class="fa fa-trash table-icon"></i></td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
@@ -39,4 +47,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped src="@/styles/components/DataTable.css"></style>
