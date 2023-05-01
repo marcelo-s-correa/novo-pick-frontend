@@ -1,78 +1,40 @@
 <template>
   <div class="register-page">
-    <div class="register-form-container">
-      <h1 class="register-title">Cadastro</h1>
-      <form class="register-form" @submit.prevent="submitForm">
-        <div class="form-group">
-          <label for="nomeCompleto" class="form-label">Nome completo</label>
-          <input
-            id="nomeCompleto"
-            v-model="nomeCompleto"
-            type="text"
-            class="form-input"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="dataNascimento" class="form-label"
-            >Data de Nascimento</label
-          >
-          <input
-            id="dataNascimento"
-            v-model="dataNascimento"
-            type="date"
-            class="form-input"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="nomeUsuario" class="form-label">Nome de Usuário</label>
-          <input
-            id="nomeUsuario"
-            v-model="nomeUsuario"
-            type="text"
-            class="form-input"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="email" class="form-label">E-mail</label>
-          <input
-            id="email"
-            v-model="email"
-            type="email"
-            class="form-input"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="senha" class="form-label">Senha</label>
-          <input
-            id="senha"
-            v-model="senha"
-            type="password"
-            class="form-input"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="confirmarSenha" class="form-label">Confirmar Senha</label>
-          <input
-            id="confirmarSenha"
-            v-model="confirmarSenha"
-            type="password"
-            class="form-input"
-            required
-          />
-        </div>
-
-        <button type="submit" class="register-button">Cadastrar</button>
-      </form>
+    <div class="register-content">
+      <v-card-title>Cadastro</v-card-title>
+      <v-form @submit.prevent="registerUser">
+        <v-text-field v-model="name" label="Nome" required></v-text-field>
+        <v-text-field
+          v-model="email"
+          label="E-mail"
+          type="email"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="username"
+          label="Nome de usuário"
+          required
+        ></v-text-field>
+        <v-date-picker
+          v-model="birthdate"
+          label="Data de nascimento"
+        ></v-date-picker>
+        <v-select v-model="city" :items="cities" label="Cidade"></v-select>
+        <v-select v-model="state" :items="states" label="Estado"></v-select>
+        <v-text-field
+          v-model="password"
+          label="Senha"
+          type="password"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="confirmPassword"
+          label="Confirme a senha"
+          type="password"
+          required
+        ></v-text-field>
+        <v-btn type="submit" color="primary">Cadastrar</v-btn>
+      </v-form>
     </div>
   </div>
 </template>
@@ -83,12 +45,16 @@ export default {
   data() {
     return {
       pageTitle: "Cadastro | Pick ",
-      nomeCompleto: "",
-      dataNascimento: "",
-      nomeUsuario: "",
+      name: "",
       email: "",
-      senha: "",
-      confirmarSenha: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+      birthdate: null,
+      city: null,
+      state: null,
+      cities: ["São Paulo", "Rio de Janeiro", "Belo Horizonte", "Porto Alegre"],
+      states: ["SP", "RJ", "MG", "RS"],
     };
   },
   mounted() {
@@ -96,19 +62,8 @@ export default {
   },
 
   methods: {
-    submitForm() {
-      if (this.senha === this.confirmarSenha) {
-        const dados = {
-          nomeCompleto: this.nomeCompleto,
-          dataNascimento: this.dataNascimento,
-          nomeUsuario: this.nomeUsuario,
-          email: this.email,
-          senha: this.senha,
-        };
-        console.log(dados);
-      } else {
-        alert("As senhas não coincidem. Por favor, verifique novamente.");
-      }
+    registerUser(userData) {
+      console.log("UserData", userData);
     },
   },
 };
@@ -125,41 +80,12 @@ export default {
   height: 100vh;
 }
 
-.register-form-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+.register-content {
   background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  padding: 64px;
-}
-
-.form-group {
+  width: 480px;
+  padding: 48px;
+  border-radius: 24px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
-  width: 400px;
-}
-
-.register-form input {
-  display: block;
-  margin-bottom: 10px;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.register-button {
-  display: block;
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
 }
 </style>

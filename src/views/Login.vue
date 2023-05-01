@@ -1,10 +1,22 @@
 <template>
   <div class="login-page">
-    <div class="login-form">
-      <h1>Entrar</h1>
-      <input v-model="email" type="email" :placeholder="placeholder" />
-      <input v-model="password" type="password" placeholder="Senha" />
-      <button @click="loginUser">Entrar</button>
+    <div class="login-content">
+      <v-card-title>Entrar</v-card-title>
+      <v-form @submit.prevent="loginUser">
+        <v-text-field
+          v-model="email"
+          label="E-mail"
+          type="email"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="password"
+          label="Senha"
+          type="password"
+          required
+        ></v-text-field>
+        <v-btn type="submit" color="primary">Entrar</v-btn>
+      </v-form>
     </div>
   </div>
 </template>
@@ -65,55 +77,12 @@ export default {
   height: 100vh;
 }
 
-.selection-login {
-  display: flex;
-}
-
-.selection-login label {
-  color: #3333;
-}
-
-.login-form {
+.login-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 450px;
-  align-items: center;
-  justify-content: center;
   background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  padding: 64px;
-}
-
-.login-form h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.login-form input {
-  display: block;
-  margin-bottom: 10px;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.login-form button {
-  display: block;
-  margin: 20px auto 0;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 4px;
-  border: none;
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-}
-
-.login-form button:hover {
-  background-color: #409d46;
+  width: 480px;
+  padding: 48px;
+  border-radius: 24px;
 }
 </style>
