@@ -6,10 +6,11 @@
         <th class="table-header">Nome Completo</th>
         <th class="table-header">Nome de usuário</th>
         <th class="table-header">Data de nascimento</th>
-        <th class="table-header">Gênero</th>
         <th class="table-header">Cidade</th>
         <th class="table-header">Estado</th>
         <th class="table-header">Administrador</th>
+        <th class="table-header">Pontuação</th>
+
         <th class="table-header">Editar</th>
         <th class="table-header">Deletar</th>
       </tr>
@@ -17,13 +18,14 @@
     <tbody>
       <tr v-for="(item, index) in data" :key="index">
         <td class="table-id">{{ item.id }}</td>
-        <td class="table-data">{{ item.nome }}</td>
+        <td class="table-data">{{ item.name }}</td>
         <td class="table-id">{{ item.username }}</td>
-        <td class="table-data">{{ item.nascimento }}</td>
-        <td class="table-id">{{ item.genero }}</td>
-        <td class="table-data">{{ item.cidade }}</td>
-        <td class="table-id">{{ item.estado }}</td>
+        <td class="table-data">{{ item.birthdate }}</td>
+
+        <td class="table-data">{{ item.city }}</td>
+        <td class="table-id">{{ item.state }}</td>
         <td class="table-id">{{ item.isAdmin }}</td>
+        <td class="table-id">{{ item.points }}</td>
         <td class="table-data"><i class="fa fa-pencil table-icon"></i></td>
         <td class="table-data"><i class="fa fa-trash table-icon"></i></td>
       </tr>

@@ -6,6 +6,7 @@
 
 <script>
 import UsersList from "@/components/DataTables/UserList.vue";
+import api from "@/services/api";
 
 export default {
   name: "ThemesPage",
@@ -15,22 +16,18 @@ export default {
   data() {
     return {
       pageTitle: "Usuários | Pick ",
-      userList: [
-        {
-          id: 1,
-          nome: "Marcelo S. Corrêa",
-          username: "marcelo",
-          nascimento: "03/01/2001",
-          genero: "Masculino",
-          cidade: "Volta Redonda",
-          estado: "RJ",
-          isAdmin: true,
-        },
-      ],
+      userList: null,
     };
+  },
+  methods: {
+    async getUsers() {
+      const response = await api.get("/users");
+      this.userList = response.data;
+    },
   },
   mounted() {
     document.title = this.pageTitle;
+    this.getUsers();
   },
 };
 </script>
