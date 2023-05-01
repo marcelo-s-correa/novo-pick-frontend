@@ -2,17 +2,7 @@
   <div class="login-page">
     <div class="login-form">
       <h1>Entrar</h1>
-      <div class="selection-login">
-        <label>
-          <input type="radio" v-model="loginOption" value="username" />
-          Nome de usuário
-        </label>
-        <label>
-          <input type="radio" v-model="loginOption" value="email" />
-          Email
-        </label>
-      </div>
-      <input v-model="login" :placeholder="placeholder" />
+      <input v-model="email" type="email" :placeholder="placeholder" />
       <input v-model="password" type="password" placeholder="Senha" />
       <button @click="loginUser">Entrar</button>
     </div>
@@ -20,14 +10,16 @@
 </template>
 
 <script>
+import { login } from "@/services/auth";
+import { showToast } from "@/utils/toastfy";
+
 export default {
   name: "LoginPage",
   data() {
     return {
       pageTitle: "Entrar | Pick ",
-      login: "",
+      email: "",
       password: "",
-      loginOption: "username",
     };
   },
   mounted() {
@@ -39,7 +31,25 @@ export default {
     },
   },
   methods: {
-    loginUser() {},
+    async loginUser() {
+      try {
+        const response = await login(this.email, this.password);
+        console.log("response", response);
+        showToast(
+          "Login realizado com sucesso !",
+          3000,
+          "right",
+          "top",
+          "green"
+        );
+        if (response.token) {
+          this.$router.push("/game");
+        }
+      } catch (err) {
+        showToast("Falha ao realizar login", 3000, "right", "top", "red");
+        console.log(err);
+      }
+    },
   },
 };
 </script>

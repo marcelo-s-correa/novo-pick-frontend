@@ -6,6 +6,7 @@
 
 <script>
 import QuestionList from "@/components/DataTables/QuestionList.vue";
+import api from "@/services/api";
 
 export default {
   name: "QuestionsPage",
@@ -15,55 +16,17 @@ export default {
   data() {
     return {
       pageTitle: "Perguntas | Pick ",
-      questionsList: [
-        {
-          id: 1,
-          titulo: "Qual é o nome da sua empresa?",
-          dificuldade: "Fácil",
-          alternativas: [
-            {
-              id: 1,
-              texto: "Pick",
-              isCorrect: true,
-            },
-            {
-              id: 2,
-              texto: "Result",
-              isCorrect: false,
-            },
-            {
-              id: 1,
-              texto: "tres",
-              isCorrect: false,
-            },
-          ],
-        },
-        {
-          id: 2,
-          titulo: "Teste da empresa",
-          dificuldade: "Médio",
-          alternativas: [
-            {
-              id: 1,
-              texto: "Pick",
-              isCorrect: true,
-            },
-            {
-              id: 2,
-              texto: "Result",
-              isCorrect: false,
-            },
-            {
-              id: 1,
-              texto: "tres",
-              isCorrect: false,
-            },
-          ],
-        },
-      ],
+      questionsList: null,
     };
   },
+  methods: {
+    async getQuestions() {
+      const response = await api.get("/questions");
+      this.questionsList = response.data;
+    },
+  },
   mounted() {
+    this.getQuestions();
     document.title = this.pageTitle;
   },
 };

@@ -6,6 +6,7 @@
 
 <script>
 import ThemesList from "@/components/DataTables/ThemesList.vue";
+import api from "@/services/api";
 
 export default {
   name: "ThemesPage",
@@ -15,23 +16,17 @@ export default {
   data() {
     return {
       pageTitle: "Temas | Pick ",
-      themesList: [
-        {
-          id: 1,
-          titulo: "TEMA N°¹",
-          descricao: "Este tema é facil",
-          dificuldade: "Fácil",
-        },
-        {
-          id: 2,
-          titulo: "TEMA N°2",
-          descricao: "Este tema é médio",
-          dificuldade: "Médio",
-        },
-      ],
+      themesList: null,
     };
   },
+  methods: {
+    async getThemes() {
+      const response = await api.get("/themes");
+      this.themesList = response.data;
+    },
+  },
   mounted() {
+    this.getThemes();
     document.title = this.pageTitle;
   },
 };
