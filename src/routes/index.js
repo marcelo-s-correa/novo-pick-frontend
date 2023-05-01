@@ -7,6 +7,7 @@ import RegisterPage from "@/views/Register.vue";
 
 import AppMain from "@/views/Main.vue";
 import AppAdmin from "@/views/Admin.vue";
+import AppGame from "@/views/Game.vue";
 
 import * as VueRouter from "vue-router";
 import store from "../store";
@@ -17,6 +18,10 @@ import DashboardPage from "@/components/Admin/Dashboard.vue";
 import UsersPage from "@/components/Admin/Users.vue";
 import ThemesPage from "@/components/Admin/Themes.vue";
 import QuestionsPage from "@/components/Admin/Questions.vue";
+
+//GAME COMPONENTES
+
+import GameMap from "@/components/Game/GameMap.vue";
 
 const routes = [
   { path: "/login", component: LoginPage },
@@ -39,6 +44,11 @@ const routes = [
       { path: "themes", component: ThemesPage },
       { path: "questions", component: QuestionsPage },
     ],
+  },
+  {
+    path: "/game",
+    component: AppGame,
+    children: [{ path: "", component: GameMap }],
   },
 ];
 
