@@ -22,6 +22,7 @@ export default {
   methods: {
     async getThemes() {
       const response = await api.get("/themes");
+      console.log("RESPONSE", response);
       this.themesList = response.data;
     },
   },

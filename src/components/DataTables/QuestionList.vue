@@ -13,8 +13,10 @@
     <tbody>
       <tr v-for="(item, index) in data" :key="index">
         <td class="table-id">{{ item.id }}</td>
-        <td class="table-data">{{ item.titulo }}</td>
-        <td class="table-data">{{ item.dificuldade }}</td>
+        <td class="table-data">{{ item.title }}</td>
+        <td class="table-data">
+          {{ this.translateDifficulty(item.difficulty) }}
+        </td>
         <td class="table-data">Alternativas</td>
         <td class="table-data"><i class="fa fa-pencil table-icon"></i></td>
         <td class="table-data"><i class="fa fa-trash table-icon"></i></td>
@@ -30,6 +32,22 @@ export default {
     data: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    translateDifficulty(difficulty) {
+      switch (difficulty) {
+        case "easy":
+          return "Fácil";
+        case "medium":
+          return "Medio";
+        case "hard":
+          return "Dificil";
+        case "very hard":
+          return "Dificil";
+        default:
+          return difficulty;
+      }
     },
   },
   components: {},

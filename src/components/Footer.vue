@@ -1,12 +1,18 @@
 <template>
   <footer class="footer">
     <nav class="nav-links">
-      <a v-for="link in navLinks" :key="link.url" :href="link.url">{{
-        link.label
-      }}</a>
+      <router-link
+        v-for="link in navLinks"
+        :key="link.url"
+        :href="link.url"
+        class="link"
+        :to="link.url"
+      >
+        {{ link.label }}</router-link
+      >
     </nav>
     <p class="copyright">
-      © 2023 Nome da Empresa. Todos os direitos reservados.
+      © 2023 Pick SI & HISTÓRIA. Todos os direitos reservados.
     </p>
   </footer>
 </template>

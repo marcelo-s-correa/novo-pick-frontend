@@ -12,8 +12,8 @@
     <tbody>
       <tr v-for="(item, index) in data" :key="index">
         <td class="table-id">{{ item.id }}</td>
-        <td class="table-data">{{ item.titulo }}</td>
-        <td class="table-id">{{ item.descricao }}</td>
+        <td class="table-data">{{ item.title }}</td>
+        <td class="table-id">{{ item.description }}</td>
         <td class="table-data"><i class="fa fa-pencil table-icon"></i></td>
         <td class="table-data"><i class="fa fa-trash table-icon"></i></td>
       </tr>

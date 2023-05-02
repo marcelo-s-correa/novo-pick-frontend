@@ -26,8 +26,8 @@
         <td class="table-id">{{ item.state }}</td>
         <td class="table-id">{{ item.isAdmin }}</td>
         <td class="table-id">{{ item.points }}</td>
-        <td class="table-data"><i class="fa fa-pencil table-icon"></i></td>
-        <td class="table-data"><i class="fa fa-trash table-icon"></i></td>
+        <td class="table-data">Editar</td>
+        <td class="table-data">Deletar</td>
       </tr>
     </tbody>
   </table>

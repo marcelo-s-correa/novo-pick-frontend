@@ -58,7 +58,7 @@
   <section class="register-now">
     <h3>Registre-se agora mesmo e comece a jogar</h3>
     <p>É gratuito e sempre será ! inicie suar joranada agora mesmo !</p>
-    <v-btn color="primary" @click="register"> Criar conta </v-btn>
+    <v-btn color="primary" @click="navRegister"> Criar conta </v-btn>
   </section>
 </template>
 
@@ -131,6 +131,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    navRegister() {
+      this.$router.push("/register");
+    },
   },
   mounted() {
     document.title = this.pageTitle;

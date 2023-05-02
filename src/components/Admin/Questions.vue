@@ -22,6 +22,7 @@ export default {
   methods: {
     async getQuestions() {
       const response = await api.get("/questions");
+      console.log("response", response.data);
       this.questionsList = response.data;
     },
   },
