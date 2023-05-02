@@ -44,11 +44,34 @@ const routes = [
       { path: "themes", component: ThemesPage },
       { path: "questions", component: QuestionsPage },
     ],
+    beforeEnter: (to, from, next) => {
+      const user = JSON.parse(localStorage.getItem("auth"));
+
+      const isAdmin = user ? user.userData.isAdmin : false;
+      console.log("isAdmin", isAdmin);
+
+      if (isAdmin) {
+        next();
+      } else if (user) {
+        next("/game");
+      } else {
+        next("/login");
+      }
+    },
   },
   {
     path: "/game",
     component: AppGame,
     children: [{ path: "", component: GameMap }],
+    beforeEnter: (to, from, next) => {
+      const user = JSON.parse(localStorage.getItem("auth"));
+
+      if (user) {
+        next();
+      } else {
+        next("/login");
+      }
+    },
   },
 ];
 
