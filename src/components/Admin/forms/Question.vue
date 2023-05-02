@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="form-content">
     <v-card-title>Pergunta</v-card-title>
     <v-form @submit.prevent="newQuestion">
       <v-text-field
@@ -153,7 +153,7 @@ export default {
 h4 {
   margin: 12px;
 }
-.content {
+.form-content {
   padding: 32px 64px;
 }
 
