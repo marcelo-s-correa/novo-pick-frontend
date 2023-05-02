@@ -18,6 +18,7 @@ import DashboardPage from "@/components/Admin/Dashboard.vue";
 import UsersPage from "@/components/Admin/Users.vue";
 import ThemesPage from "@/components/Admin/Themes.vue";
 import QuestionsPage from "@/components/Admin/Questions.vue";
+import QuestionForm from "@/components/Admin/forms/Question.vue";
 
 //GAME COMPONENTES
 
@@ -43,6 +44,7 @@ const routes = [
       { path: "users", component: UsersPage },
       { path: "themes", component: ThemesPage },
       { path: "questions", component: QuestionsPage },
+      { path: "question", component: QuestionForm },
     ],
     beforeEnter: (to, from, next) => {
       const user = JSON.parse(localStorage.getItem("auth"));
