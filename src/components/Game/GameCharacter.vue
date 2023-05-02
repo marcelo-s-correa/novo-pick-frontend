@@ -17,8 +17,8 @@ export default {
 <style>
 .character {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 80px;
 }
 
 .character img {

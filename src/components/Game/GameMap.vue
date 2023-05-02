@@ -1,6 +1,46 @@
 <template>
   <div class="game">
-    <div class="background"></div>
+    <div id="map" class="background">
+      <svg
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+      >
+        <rect
+          x="0"
+          y="0"
+          width="700"
+          height="160"
+          style="fill: red; opacity: 0.5"
+        ></rect>
+        <rect
+          x="0"
+          y="0"
+          width="160"
+          height="800"
+          style="fill: red; opacity: 0.5"
+        ></rect>
+        <rect
+          x="670"
+          y="0"
+          width="160"
+          height="800"
+          style="fill: red; opacity: 0.5"
+        ></rect>
+        <rect
+          x="100"
+          y="550"
+          width="180"
+          height="300"
+          style="fill: blue; opacity: 0.5"
+        ></rect>
+        <rect
+          x="530"
+          y="550"
+          width="180"
+          height="300"
+          style="fill: blue; opacity: 0.5"
+        ></rect>
+      </svg>
+    </div>
     <GameCharacter :position="position" />
   </div>
 </template>
@@ -15,7 +55,7 @@ export default {
   },
   data() {
     return {
-      position: { x: 0, y: 0 },
+      position: { x: 380, y: 660 },
     };
   },
   methods: {
@@ -30,18 +70,7 @@ export default {
         this.position.x += 10;
       }
     },
-    checkCollision() {
-      if (this.position.x < 0) {
-        this.position.x = 0;
-      } else if (this.position.x > 100) {
-        this.position.x = 100;
-      }
-      if (this.position.y < 0) {
-        this.position.y = 0;
-      } else if (this.position.y > 100) {
-        this.position.y = 100;
-      }
-    },
+    checkCollision() {},
   },
   mounted() {
     window.addEventListener("keydown", (event) => {
@@ -63,9 +92,14 @@ export default {
 
 <style>
 .game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   width: 800px;
-  height: 600px;
+  height: 800px;
+  border: 14px solid rgba(61, 61, 61, 0.8);
+  border-radius: 18px;
 }
 
 .background {
@@ -73,7 +107,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(@/assets/images/game/background.jpeg);
+  background-image: url(@/assets/images/game/background.png);
   background-size: cover;
 }
 </style>
