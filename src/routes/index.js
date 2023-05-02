@@ -20,6 +20,7 @@ import ThemesPage from "@/components/Admin/Themes.vue";
 import QuestionsPage from "@/components/Admin/Questions.vue";
 import QuestionForm from "@/components/Admin/forms/Question.vue";
 import ThemeForm from "@/components/Admin/forms/Theme.vue";
+import UserForm from "@/components/Admin/forms/User.vue";
 
 //GAME COMPONENTES
 
@@ -47,6 +48,7 @@ const routes = [
       { path: "questions", component: QuestionsPage },
       { path: "question", component: QuestionForm },
       { path: "theme", component: ThemeForm },
+      { path: "user", component: UserForm },
     ],
     beforeEnter: (to, from, next) => {
       const user = JSON.parse(localStorage.getItem("auth"));
