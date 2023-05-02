@@ -35,6 +35,8 @@ export default {
   data() {
     return {
       pageTitle: "Pergunta | Pick ",
+      title: null,
+      description: null,
     };
   },
   methods: {
