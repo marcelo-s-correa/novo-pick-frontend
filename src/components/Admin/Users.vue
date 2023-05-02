@@ -1,5 +1,8 @@
 <template>
   <div class="list-content">
+    <v-btn class="add-new" color="primary" @click="navNewUser">
+      Adicionar Usuário
+    </v-btn>
     <UsersList v-bind:data="userList" />
   </div>
 </template>
@@ -23,6 +26,9 @@ export default {
     async getUsers() {
       const response = await api.get("/users");
       this.userList = response.data;
+    },
+    navNewUser() {
+      this.$router.push("/admin/user");
     },
   },
   mounted() {
