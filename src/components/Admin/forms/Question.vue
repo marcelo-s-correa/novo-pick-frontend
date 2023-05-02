@@ -62,6 +62,7 @@
 
 <script>
 import api from "@/services/api";
+import { showToast } from "@/utils/toastfy";
 
 export default {
   name: "QuestionForm",
@@ -125,8 +126,18 @@ export default {
 
       try {
         const response = api.post("/questions", QuestionData);
-        return response;
+        showToast(
+          "Pergunta cadastrada com sucesso !",
+          3000,
+          "right",
+          "top",
+          "green"
+        );
+        if (response) {
+          this.$router.push("/admin/questions	");
+        }
       } catch (err) {
+        showToast("Falha ao cadastrar pergunta", 3000, "left", "top", "red");
         console.log("Error", err);
       }
     },

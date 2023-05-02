@@ -22,6 +22,7 @@
 
 <script>
 import api from "@/services/api";
+import { showToast } from "@/utils/toastfy";
 
 export default {
   name: "ThemeForm",
@@ -47,8 +48,24 @@ export default {
 
       try {
         const response = api.post("/themes", ThemeData);
-        return response;
+        showToast(
+          "Tema cadastrado com sucesso !",
+          3000,
+          "right",
+          "top",
+          "green"
+        );
+        if (response) {
+          this.$router.push("/admin/themes");
+        }
       } catch (err) {
+        showToast(
+          "Falha ao cadastrar novo tema !",
+          3000,
+          "right",
+          "top",
+          "green"
+        );
         console.log("Error", err);
       }
     },

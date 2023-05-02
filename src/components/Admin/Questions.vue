@@ -1,5 +1,8 @@
 <template>
   <div class="list-content">
+    <v-btn class="add-new" color="primary" @click="navNewQuestion">
+      Adicionar Questão
+    </v-btn>
     <QuestionList v-bind:data="questionsList" />
   </div>
 </template>
@@ -25,6 +28,9 @@ export default {
       console.log("response", response.data);
       this.questionsList = response.data;
     },
+    navNewQuestion() {
+      this.$router.push("/admin/question");
+    },
   },
   mounted() {
     this.getQuestions();
@@ -34,6 +40,9 @@ export default {
 </script>
 
 <style>
+.add-new {
+  margin-bottom: 18px;
+}
 .list-content {
   padding: 64px;
 }

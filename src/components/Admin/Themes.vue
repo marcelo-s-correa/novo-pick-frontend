@@ -1,5 +1,8 @@
 <template>
   <div class="list-content">
+    <v-btn class="add-new" color="primary" @click="navNewTheme">
+      Adicionar Tema
+    </v-btn>
     <ThemesList v-bind:data="themesList" />
   </div>
 </template>
@@ -22,8 +25,10 @@ export default {
   methods: {
     async getThemes() {
       const response = await api.get("/themes");
-      console.log("RESPONSE", response);
       this.themesList = response.data;
+    },
+    navNewTheme() {
+      this.$router.push("/admin/theme");
     },
   },
   mounted() {
