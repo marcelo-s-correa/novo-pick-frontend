@@ -1,7 +1,15 @@
 <template>
   <div class="form-content">
     <v-card-title>Tema</v-card-title>
-    <v-form @submit.prevent="newQuestion">
+    <v-form
+      @submit.prevent="
+        {
+          {
+            this.id ? this.updateTheme(this.id) : this.newTheme();
+          }
+        }
+      "
+    >
       <v-text-field
         v-model="title"
         label="Titulo"
@@ -26,21 +34,16 @@ import { showToast } from "@/utils/toastfy";
 
 export default {
   name: "ThemeForm",
-  props: {
-    id: {
-      type: Number,
-      required: true,
-    },
-  },
   data() {
     return {
       pageTitle: "Pergunta | Pick ",
+      id: this.$route.params.id,
       title: null,
       description: null,
     };
   },
   methods: {
-    newQuestion() {
+    newTheme() {
       const ThemeData = {
         title: this.title,
         description: this.description,
@@ -71,9 +74,50 @@ export default {
         console.log("Error", err);
       }
     },
+    async updateTheme(id) {
+      const updateData = {
+        title: this.title,
+        description: this.description,
+      };
+
+      try {
+        const response = await api.put(`/themes/${id}`, updateData);
+        showToast(
+          "Tema autalizado com sucesso !",
+          3000,
+          "right",
+          "top",
+          "green"
+        );
+        this.$router.push("/admin/themes");
+        return response;
+      } catch (error) {
+        showToast(
+          "Falha ao atualizar Tema ! Favor tentar novamente.",
+          3000,
+          "right",
+          "top",
+          "red"
+        );
+        console.log(error);
+      }
+    },
+    async getThemeData(id) {
+      try {
+        const response = await api.get(`/themes/${id}`);
+        this.title = response.data.title;
+        this.description = response.data.description;
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
   mounted() {
     document.title = this.pageTitle;
+
+    if (this.id) {
+      this.getThemeData(this.id);
+    }
   },
 };
 </script>

@@ -86,7 +86,6 @@ export default {
           Swal.fire("Cancelado", "Seu item não foi excluído.", "error");
         }
       });
-      this.$forceUpdate();
     },
   },
 };
