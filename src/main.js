@@ -6,6 +6,7 @@ import { router } from "./routes";
 import { VIcon } from "vue-icons";
 import "vuetify/dist/vuetify.min.css";
 import "toastify-js/src/toastify.css";
+import "@mdi/font/css/materialdesignicons.css";
 
 const pickApp = createApp(App);
 

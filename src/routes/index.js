@@ -44,11 +44,14 @@ const routes = [
     children: [
       { path: "", component: DashboardPage },
       { path: "users", component: UsersPage },
+      { path: "user", component: UserForm },
+      { path: "user/:id", component: UserForm },
       { path: "themes", component: ThemesPage },
+      { path: "theme", component: ThemeForm },
+      { path: "theme/:id", component: ThemeForm },
       { path: "questions", component: QuestionsPage },
       { path: "question", component: QuestionForm },
-      { path: "theme", component: ThemeForm },
-      { path: "user", component: UserForm },
+      { path: "question/:id", component: QuestionForm },
     ],
     beforeEnter: (to, from, next) => {
       const user = JSON.parse(localStorage.getItem("auth"));

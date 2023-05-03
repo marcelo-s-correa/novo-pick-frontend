@@ -36,10 +36,10 @@ export default {
     return {
       drawer: false,
       items: [
-        { title: "Dashboard", icon: "mdi-home", route: "/admin" },
-        { title: "Usuários", icon: "mdi-home", route: "/admin/users" },
-        { title: "Temas", icon: "mdi-cart", route: "/admin/themes/" },
-        { title: "Perguntas", icon: "mdi-email", route: "/admin/questions" },
+        { title: "Dashboard", icon: "mdi", route: "/admin" },
+        { title: "Usuários", icon: "mdi", route: "/admin/users" },
+        { title: "Temas", icon: "mdi", route: "/admin/themes/" },
+        { title: "Perguntas", icon: "mdi", route: "/admin/questions" },
       ],
     };
   },

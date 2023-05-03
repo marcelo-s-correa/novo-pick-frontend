@@ -1,7 +1,15 @@
 <template>
   <div class="form-content">
     <v-card-title>Usuário</v-card-title>
-    <v-form @submit.prevent="registerUser">
+    <v-form
+      @submit.prevent="
+        {
+          {
+            this.id ? updateUser(this.id) : registerUser();
+          }
+        }
+      "
+    >
       <v-text-field v-model="name" label="Nome" required></v-text-field>
       <v-text-field
         v-model="email"
@@ -40,7 +48,7 @@
         v-model="selectedCity"
         :items="cities"
         label="Selecione uma cidade"
-        item-value="value="
+        item-value="value"
         item-title="nome"
       ></v-select>
       <v-text-field
@@ -57,7 +65,9 @@
         type="password"
         required
       ></v-text-field>
-      <v-btn type="submit" color="primary">Salvar</v-btn>
+      <v-btn type="submit" color="primary">
+        {{ this.id ? "Atualizar Usuário" : "Salvar Usuário" }}</v-btn
+      >
     </v-form>
   </div>
 </template>
@@ -65,18 +75,14 @@
 <script>
 import api from "@/services/api";
 import { showToast } from "@/utils/toastfy";
+import { formatToSelect } from "@/utils/dateFormatter";
 
 export default {
   name: "UserForm",
-  props: {
-    id: {
-      type: Number,
-      required: true,
-    },
-  },
   data() {
     return {
       pageTitle: "Pergunta | Pick ",
+      id: this.$route.params.id,
       name: "",
       email: "",
       username: "",
@@ -90,17 +96,37 @@ export default {
       states: [],
       adminOptions: [
         {
-          value: true,
+          value: 1,
           title: "Sim",
         },
         {
-          value: false,
+          value: 2,
           title: "Não",
         },
       ],
     };
   },
   methods: {
+    async getUserData(id) {
+      try {
+        const response = await api.get(`/users/${id}`);
+        this.name = response.data.name;
+        this.email = response.data.email;
+        this.username = response.data.username;
+        this.birthdate = formatToSelect(response.data.birthdate);
+        this.isAdmin = response.data.isAdmin;
+        this.selectedState = {
+          value: response.data.state,
+          title: response.data.state,
+        };
+        this.selectedCity = {
+          value: response.data.city,
+          nome: response.data.city,
+        };
+      } catch (err) {
+        console.log(err);
+      }
+    },
     async registerUser() {
       const userData = {
         name: this.name,
@@ -115,16 +141,56 @@ export default {
       try {
         const response = await api.post("/users", userData);
         showToast(
-          "Cadastro realizado com sucesso ! Faça login para continuar !",
+          "Cadastro realizado com sucesso !",
           3000,
           "right",
           "top",
           "green"
         );
+        this.$router.push("/admin/users");
         return response;
       } catch (error) {
         showToast(
           "Falha ao realizar cadastro ! Favor tentar novamente.",
+          3000,
+          "right",
+          "top",
+          "red"
+        );
+        console.log(error);
+      }
+    },
+    async updateUser(id) {
+      const updateData = {
+        name: this.name,
+        email: this.email,
+        username: this.username,
+        password: this.password,
+        birthdate: this.birthdate,
+        city:
+          this.selectedCity && this.selectedCity.value
+            ? this.selectedCity.value
+            : this.selectedCity,
+        state:
+          this.selectedState && this.selectedState.value
+            ? this.selectedState.value
+            : this.selectedState,
+      };
+
+      try {
+        const response = await api.put(`/users/${id}`, updateData);
+        showToast(
+          "Usuário autalizado com sucesso !",
+          3000,
+          "right",
+          "top",
+          "green"
+        );
+        this.$router.push("/admin/users");
+        return response;
+      } catch (error) {
+        showToast(
+          "Falha ao atualizar usuário ! Favor tentar novamente.",
           3000,
           "right",
           "top",
@@ -168,6 +234,10 @@ export default {
   },
   mounted() {
     this.getStates();
+
+    if (this.id) {
+      this.getUserData(this.id);
+    }
     document.title = this.pageTitle;
   },
 };
