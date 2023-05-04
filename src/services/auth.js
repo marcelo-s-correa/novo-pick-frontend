@@ -1,4 +1,5 @@
 import api from "@/services/api";
+import store from "@/store";
 
 const authConfig = {
   authHeader: "Authorization",
@@ -26,6 +27,12 @@ export const login = async (email, password) => {
     email,
     password,
   });
+
+  store.dispatch("login", {
+    token: response.data.token,
+    user: response.data.userData,
+  });
+
   localStorage.setItem(authConfig.storageKey, JSON.stringify(response.data));
   return response.data;
 };

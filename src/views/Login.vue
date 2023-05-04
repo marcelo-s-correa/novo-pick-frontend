@@ -54,7 +54,8 @@ export default {
           "top",
           "green"
         );
-        if (response.token) {
+
+        if (this.$store.state.auth.token) {
           this.$router.push("/game");
         }
       } catch (err) {

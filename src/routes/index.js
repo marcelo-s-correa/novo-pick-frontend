@@ -10,7 +10,7 @@ import AppAdmin from "@/views/Admin.vue";
 import AppGame from "@/views/Game.vue";
 
 import * as VueRouter from "vue-router";
-import store from "../store";
+import store from "@/store";
 
 //ADMIN COMPONENTES
 
@@ -73,9 +73,10 @@ const routes = [
     component: AppGame,
     children: [{ path: "", component: GameMap }],
     beforeEnter: (to, from, next) => {
-      const user = JSON.parse(localStorage.getItem("auth"));
+      const isLoggedIn = store.getters.isLoggedIn;
+      console.log("isLoggedIn", isLoggedIn);
 
-      if (user) {
+      if (isLoggedIn) {
         next();
       } else {
         next("/login");
