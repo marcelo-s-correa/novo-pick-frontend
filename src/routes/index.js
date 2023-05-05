@@ -25,6 +25,8 @@ import UserForm from "@/components/Admin/forms/User.vue";
 //GAME COMPONENTES
 
 import GameMap from "@/components/Game/GameMap.vue";
+import GameProfile from "@/components/Game/GameProfile.vue";
+import GameRanking from "@/components/Game/GameRanking.vue";
 
 const routes = [
   { path: "/login", component: LoginPage },
@@ -55,9 +57,7 @@ const routes = [
     ],
     beforeEnter: (to, from, next) => {
       const user = JSON.parse(localStorage.getItem("auth"));
-
-      const isAdmin = user ? user.userData.isAdmin : false;
-      console.log("isAdmin", isAdmin);
+      const isAdmin = user ? user.auth.user.isAdmin : false;
 
       if (isAdmin) {
         next();
@@ -71,10 +71,13 @@ const routes = [
   {
     path: "/game",
     component: AppGame,
-    children: [{ path: "", component: GameMap }],
+    children: [
+      { path: "", component: GameMap },
+      { path: "profile", component: GameProfile },
+      { path: "ranking", component: GameRanking },
+    ],
     beforeEnter: (to, from, next) => {
       const isLoggedIn = store.getters.isLoggedIn;
-      console.log("isLoggedIn", isLoggedIn);
 
       if (isLoggedIn) {
         next();

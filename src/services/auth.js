@@ -13,7 +13,7 @@ api.interceptors.request.use(
     if (auth) {
       config.headers[
         authConfig.authHeader
-      ] = `${authConfig.authTokenPrefix} ${auth.token}`;
+      ] = `${authConfig.authTokenPrefix} ${auth.auth.token}`;
     }
     return config;
   },
@@ -33,7 +33,6 @@ export const login = async (email, password) => {
     user: response.data.userData,
   });
 
-  localStorage.setItem(authConfig.storageKey, JSON.stringify(response.data));
   return response.data;
 };
 

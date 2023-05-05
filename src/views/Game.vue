@@ -8,7 +8,7 @@
       </v-tabs>
       <v-spacer></v-spacer>
     </v-app-bar>
-    <div class="container">
+    <div class="game-container">
       <router-view></router-view>
     </div>
   </v-app>
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style>
-.container {
+.game-container {
   display: flex;
   width: 100vw;
   height: 100vh;
